@@ -59,3 +59,11 @@ dist
 
 # Serverless directories
 .serverless
+
+# Prettier configuration and package files
+.prettierrc.json
+package-lock.json
+package.json
+
+# Documentation files
+README.md
