@@ -1,11 +1,28 @@
 import express from "express";
+import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
+import multer from "multer";
+import path from "path";
+import cors from "cors";
+import { config } from "dotenv";
+
 const app = express();
+config();
+
+app.use(express.json());
+app.use(cors());
+
+//Database connection with mongodb atlas
+mongoose.connect(process.env.MONGO_CONNECTION_STRING);
 
 app.get("/", (req, res) => {
-  res.send("Running!");
+  res.send("Express App is Running!");
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(process.env.PORT, (error) => {
+  if (!error) {
+    console.log(`Server running on port ${process.env.PORT}`);
+  } else {
+    console.log("Error:" + error);
+  }
 });
