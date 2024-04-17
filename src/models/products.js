@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const Product = mongoose.model("Product", {
+export const Products = mongoose.model("Products", {
   id: {
     type: Number,
     require: true,
