@@ -1,6 +1,7 @@
 # Dependency directories
 node_modules
 bower_components
+.github
 
 # Build output directories
 dist
