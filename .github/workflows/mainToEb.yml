@@ -1,0 +1,38 @@
+name: Deploy from main to Beanstalk
+
+on:
+  push:
+    branch:
+      - main
+
+jobs:
+  build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate deployment package
+        run: zip -r ecom-server-build.zip .
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v22
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: 'Ecom-backend-server'
+          environment_name: 'Ecom-backend-server-env'
+          version_label: ${{ github.sha }}
+          region: ${{ secrets.AWS_REGION }}
+          deployment_package: ecom-server-build.zip
+        env:
+          MONGO_CONNECTION_STRING: ${{ secrets.MONGO_CONNECTION_STRING }}
+          PORT: ${{ secrets.PORT }}
