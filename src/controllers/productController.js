@@ -1,4 +1,4 @@
-import { Products } from "../models/products.js";
+import { Products } from "../models/productModel.js";
 
 export const addProduct = async (req, res) => {
   let products = await Products.find({});
@@ -24,7 +24,7 @@ export const addProduct = async (req, res) => {
   await product.save();
   console.log("Saved");
 
-  res.json({
+  res.status(201).json({
     success: true,
     name: req.body.name,
   });

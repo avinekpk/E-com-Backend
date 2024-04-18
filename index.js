@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import { config } from "dotenv";
 import productRoutes from "./src/routes/productRoutes.js";
+import authRoutes from "./src/routes/authRoutes.js";
 
 const app = express();
 config();
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 
 app.use("/images", express.static("upload/images"));
 app.use("/", productRoutes);
+app.use("/", authRoutes);
 
 app.listen(process.env.PORT, (error) => {
   if (!error) {
