@@ -1,12 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
-// import jwt from "jsonwebtoken";
-// import path from "path";
 import cors from "cors";
 import { config } from "dotenv";
 import productRoutes from "./src/routes/productRoutes.js";
 import authRoutes from "./src/routes/authRoutes.js";
 import displayitemsRoutes from "./src/routes/displayitemsRoutes.js.js";
+import cartRoutes from "./src/routes/cartRoutes.js";
 
 const app = express();
 config();
@@ -28,6 +27,7 @@ app.use("/images", express.static("upload/images"));
 app.use("/", productRoutes);
 app.use("/", authRoutes);
 app.use("/", displayitemsRoutes);
+app.use("/", cartRoutes);
 
 app.listen(process.env.PORT, (error) => {
   if (!error) {
