@@ -36,4 +36,5 @@ jobs:
         env:
           MONGO_CONNECTION_STRING: ${{ secrets.MONGO_CONNECTION_STRING }}
           PORT: ${{ secrets.PORT }}
-          FRONTEND_ORIGIN: ${{ secrets.FRONTEND_ORIGIN }}
+          S3_ORIGIN: ${{ secrets.S3_ORIGIN }}
+          CF_ORIGIN: ${{ secrets.CF_ORIGIN }}
