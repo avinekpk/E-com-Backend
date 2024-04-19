@@ -11,8 +11,7 @@
     "lint": "eslint .",
     "setup": "npm install",
     "prettier-format": "prettier --write . && prettier --check ."
-  }
-  ,
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/avinekpk/E-com-Backend.git"
