@@ -1,4 +1,5 @@
 import express from "express";
+import asyncHandler from "express-async-handler";
 import {
   addProduct,
   removeProduct,
@@ -15,8 +16,8 @@ router.post("/upload", multer.single("product"), (req, res) => {
   });
 });
 
-router.post("/addproduct", addProduct);
-router.post("/removeproduct", removeProduct);
-router.get("/products", getAllProducts);
+router.post("/addproduct", asyncHandler(addProduct));
+router.post("/removeproduct", asyncHandler(removeProduct));
+router.get("/products", asyncHandler(getAllProducts));
 
 export default router;
