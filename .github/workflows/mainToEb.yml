@@ -38,3 +38,4 @@ jobs:
           PORT: ${{ secrets.PORT }}
           S3_ORIGIN: ${{ secrets.S3_ORIGIN }}
           CF_ORIGIN: ${{ secrets.CF_ORIGIN }}
+          ADMIN_ORIGIN: ${{ secrets.ADMIN_ORIGIN }}
