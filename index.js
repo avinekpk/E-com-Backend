@@ -9,28 +9,29 @@ import displayitemsRoutes from "./src/routes/displayitemsRoutes.js.js";
 import cartRoutes from "./src/routes/cartRoutes.js";
 import { loggingMiddleware } from "./src/middleware/loggingMiddleware.js";
 
-const app = express();
+export const app = express();
 config();
 
 app.use(express.json());
 app.use(helmet());
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", process.env.FRONTEND_ORIGIN);
+  res.setHeader("Access-Control-Allow-Origin", "https://d34ihhe9bgn5xp.cloudfront.net");
 
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
   );
 
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type",
+    "X-Requested-With,content-type"
   );
 
   res.setHeader("Access-Control-Allow-Credentials", true);
 
   next();
 });
+
 app.options("*", cors());
 // app.use(
 //   cors({
