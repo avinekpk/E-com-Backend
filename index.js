@@ -15,7 +15,10 @@ config();
 app.use(express.json());
 app.use(helmet());
 app.use(function (req, res, next) {
-  const allowedOrigins = [process.env.CF_ORIGIN, process.env.S3_ORIGIN];
+  const allowedOrigins = [
+    "http://dev-ak-ecom-webapp.s3-website-us-east-1.amazonaws.com/",
+    "https://d34ihhe9bgn5xp.cloudfront.net",
+  ];
 
   const origin = req.headers.origin;
 
