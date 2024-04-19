@@ -13,6 +13,7 @@ config();
 
 app.use(express.json());
 app.use(helmet());
+app.options('*', cors());
 app.use(
   cors({
     origin: process.env.FRONTEND_ORIGIN,
