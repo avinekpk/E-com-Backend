@@ -1,4 +1,5 @@
 import express from "express";
+import asyncHandler from "express-async-handler";
 import {
   newCollection,
   popularInWomen,
@@ -6,7 +7,7 @@ import {
 
 const router = express.Router();
 
-router.get("/newcollection", newCollection);
-router.get("/popularinwomen", popularInWomen);
+router.get("/newcollection", asyncHandler(newCollection));
+router.get("/popularinwomen", asyncHandler(popularInWomen));
 
 export default router;

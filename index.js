@@ -7,22 +7,40 @@ import productRoutes from "./src/routes/productRoutes.js";
 import authRoutes from "./src/routes/authRoutes.js";
 import displayitemsRoutes from "./src/routes/displayitemsRoutes.js.js";
 import cartRoutes from "./src/routes/cartRoutes.js";
+import { loggingMiddleware } from "./src/middleware/loggingMiddleware.js";
 
 const app = express();
 config();
 
 app.use(express.json());
 app.use(helmet());
-//Handle OPTIONS
-app.options('*', cors());
-app.use(
-  cors({
-    origin: process.env.FRONTEND_ORIGIN,
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  }),
-);
+app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", process.env.FRONTEND_ORIGIN);
+
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+  );
+
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type",
+  );
+
+  res.setHeader("Access-Control-Allow-Credentials", true);
+
+  next();
+});
+app.options("*", cors());
+// app.use(
+//   cors({
+//     origin: process.env.FRONTEND_ORIGIN,
+//     methods: ["GET", "POST"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true,
+//   }),
+// );
+app.use(loggingMiddleware);
 
 //Database connection with mongodb atlas
 mongoose
