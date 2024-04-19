@@ -13,6 +13,7 @@ config();
 
 app.use(express.json());
 app.use(helmet());
+//Handle OPTIONS
 app.options('*', cors());
 app.use(
   cors({
