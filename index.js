@@ -12,8 +12,15 @@ const app = express();
 config();
 
 app.use(express.json());
-app.use(cors());
 app.use(helmet());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_ORIGIN,
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  }),
+);
 
 //Database connection with mongodb atlas
 mongoose
