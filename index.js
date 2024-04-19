@@ -18,8 +18,8 @@ app.use(function (req, res, next) {
   //s3, admin and cloudfront origins
   const allowedOrigins = [
     "http://dev-ak-ecom-webapp.s3-website-us-east-1.amazonaws.com",
-    "https://d34ihhe9bgn5xp.cloudfront.net",
-    "http://dev-ak-ecom-admin.s3-website-us-east-1.amazonaws.com"
+    "http://d34ihhe9bgn5xp.cloudfront.net",
+    "http://dev-ak-ecom-admin.s3-website-us-east-1.amazonaws.com",
   ];
 
   const origin = req.headers.origin;
