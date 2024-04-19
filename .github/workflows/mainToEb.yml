@@ -28,8 +28,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: 'Ecom-backend'
-          environment_name: 'Ecom-backend-env'
+          application_name: 'Ecom-backend-server'
+          environment_name: 'Ecom-backend-server-env'
           version_label: ${{ github.sha }}
           region: ${{ secrets.AWS_REGION }}
           deployment_package: ecom-server-build.zip
