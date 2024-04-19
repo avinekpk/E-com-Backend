@@ -16,8 +16,8 @@ app.use(cors());
 //Database connection with mongodb atlas
 mongoose
   .connect(process.env.MONGO_CONNECTION_STRING)
-  // .then(() => console.log("DB connected..."))
-  // .catch((err) => console.log("DB connection error!!!", err.message));
+  .then(() => console.log("DB connected..."))
+  .catch((err) => console.log("DB connection error!!!", err.message));
 
 app.get("/", (req, res) => {
   res.send("Express App is Running!");
